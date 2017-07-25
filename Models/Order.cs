@@ -18,10 +18,10 @@ namespace BangazonAPI.Models
     [Required]
     public int CustomerId { get; set; }
     public Customer Customer { get; set; }
-    public int? PaymentTypeId { get; set;} // ? means that the variable can be null
+    public int? PaymentTypeId { get; set;}
     public PaymentType PaymentType { get; set; }
 
-    public ICollection<OrderProduct> OrderProducts;
+    public ICollection<OrderProduct> OrderProducts; // the many side to a 1 to many relationship
 
   }
 }
