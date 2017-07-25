@@ -1,0 +1,21 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace BangazonAPI.Models
+{
+  public class PaymentType
+  {
+    [Key]
+    public int PaymentTypeId { get; set; }
+    [Required]
+    public string CustomerId { get; set; }
+    public Customer Customer { get; set; } // for FK
+    public int AccountNumber { get; set; }
+    public string Type { get; set; }
+
+    public ICollection<Order> Orders;
+
+  }
+}
