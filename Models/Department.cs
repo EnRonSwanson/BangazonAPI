@@ -9,11 +9,8 @@ namespace BangazonAPI.Models
   {
     [Key]
     public int DepartmentId { get; set; }
-
     public string Name { get; set; }
     public float Budget { get; set; }
-
     public ICollection<Employee> Employees;
-
   }
 }

@@ -23,6 +23,5 @@ namespace BangazonAPI.Models
     [Required]
     public Customer Customer { get; set; }
     public ICollection<OrderProduct> OrderProducts;
-
   }
 }

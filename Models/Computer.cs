@@ -9,16 +9,15 @@ namespace BangazonAPI.Models
   {
     [Key]
     public int ComputerId { get; set; }
-
     [Required]
     [DataType(DataType.Date)]
-    [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
     public DateTime PurchaseDate { get; set; }
-    [Required]
-    [DataType(DataType.Date)]
     public DateTime DecomissionDate { get; set; }
-
     public ICollection<ComputerEmployee> ComputerEmployees;
+
+    public Computer() {
+      PurchaseDate = DateTime.Now;
+    }
 
   }
 }
