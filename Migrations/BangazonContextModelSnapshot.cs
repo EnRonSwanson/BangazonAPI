@@ -22,8 +22,7 @@ namespace BangazonAPI.Migrations
 
                     b.Property<DateTime>("DecomissionDate");
 
-                    b.Property<DateTime>("PurchaseDate")
-                        .ValueGeneratedOnAddOrUpdate();
+                    b.Property<DateTime>("PurchaseDate");
 
                     b.HasKey("ComputerId");
 
@@ -95,10 +94,9 @@ namespace BangazonAPI.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<DateTime>("StartDate")
-                        .ValueGeneratedOnAddOrUpdate();
+                    b.Property<DateTime>("StartDate");
 
-                    b.Property<bool>("Supervisor");
+                    b.Property<int>("Supervisor");
 
                     b.HasKey("EmployeeId");
 
@@ -115,7 +113,7 @@ namespace BangazonAPI.Migrations
                     b.Property<int>("CustomerId");
 
                     b.Property<DateTime>("DateCreated")
-                        .ValueGeneratedOnAddOrUpdate()
+                        .ValueGeneratedOnAdd()
                         .HasDefaultValueSql("strftime('%Y-%m-%d %H:%M:%S')");
 
                     b.Property<int?>("PaymentTypeId");

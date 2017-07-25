@@ -9,20 +9,15 @@ namespace BangazonAPI.Models
   {
     [Key]
     public int ComputerEmployeeId { get; set; }
-
     [DataType(DataType.Date)]
     public DateTime? OutDate { get; set; }
-
     [DataType(DataType.Date)]
     public DateTime? InDate { get; set; }
-
     [Required]
     public int EmployeeId { get; set; }
     public Employee Employee { get; set; }
-
     [Required]
     public int ComputerId { get; set; }
     public Computer Computer { get; set; }
-
   }
 }

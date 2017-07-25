@@ -9,19 +9,19 @@ namespace BangazonAPI.Models
   {
     [Key]
     public int OrderId { get; set; }
-
     [Required]
     [DataType(DataType.Date)]
-    [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
     public DateTime DateCreated { get; set; }
-
     [Required]
     public int CustomerId { get; set; }
     public Customer Customer { get; set; }
     public int? PaymentTypeId { get; set;}
     public PaymentType PaymentType { get; set; }
-
     public ICollection<OrderProduct> OrderProducts; // the many side to a 1 to many relationship
+
+    public Order() {
+      DateCreated = DateTime.Now;
+    }
 
   }
 }

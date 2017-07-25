@@ -11,7 +11,7 @@ namespace BangazonAPI.Models
     public int PaymentTypeId { get; set; }
     [Required]
     public string CustomerId { get; set; }
-    public Customer Customer { get; set; } // for FK
+    public Customer Customer { get; set; }
     [Required]
     public int AccountNumber { get; set; }
     [Required]

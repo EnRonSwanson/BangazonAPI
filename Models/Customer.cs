@@ -12,13 +12,12 @@ namespace BangazonAPI.Models
     public int CustomerId { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
-
     [Required]
+    [DataType(DataType.Date)]
     public DateTime AccountCreationDate { get; set; }
     [DataType(DataType.Date)]
-    public DateTime LastActiveDate { get; set; } // on every login reset the counter
+    public DateTime LastActiveDate { get; set; } // on every login we need to reset the counter
     public int Active { get; set; }
-
     public ICollection<Product> ProductsToSell; // to be sold
     public ICollection<Order> Orders; // to buy or have bought
 
