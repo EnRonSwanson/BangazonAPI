@@ -20,7 +20,7 @@ namespace BangazonAPI.Controllers
             _context = ctx;
         }
 
-        // GET api/values
+        // GET all Customers from customer table
         [HttpGet]
         public IActionResult Get()
         {
@@ -34,6 +34,7 @@ namespace BangazonAPI.Controllers
             return Ok(customers);
         }
 
+        //GET one customer from customer table
         [HttpGet("{id}", Name = "GetCustomer")]
         public IActionResult Get([FromRoute] int id)
         {
@@ -59,7 +60,7 @@ namespace BangazonAPI.Controllers
             }
         }
 
-        // POST api/values
+        // POST customer values to the customer table
         [HttpPost]
         public IActionResult Post([FromBody] Customer customer)
         {
@@ -86,7 +87,7 @@ namespace BangazonAPI.Controllers
                 }
             }
 
-            return CreatedAtRoute("GetToy", new { id = customer.CustomerId }, customer);
+            return CreatedAtRoute("GetCustomer", new { id = customer.CustomerId }, customer);
         }
 
     private bool CustomerExists(int customerId)
@@ -94,7 +95,7 @@ namespace BangazonAPI.Controllers
       throw new NotImplementedException();
     }
 
-    // PUT api/values/5
+    // PUT edited values on existing customer
     [HttpPut("{id}")]
          public IActionResult Put(int id, [FromBody] Customer customer)
         {
