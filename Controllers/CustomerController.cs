@@ -131,24 +131,24 @@ namespace BangazonAPI.Controllers
 
 
         // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        // [HttpDelete("{id}")]
+        // public IActionResult Delete(int id)
+        // {
+        //     if (!ModelState.IsValid)
+        //     {
+        //         return BadRequest(ModelState);
+        //     }
 
-            Customer customer = _context.Customer.Single(m => m.CustomerId == id);
-            if (customer == null)
-            {
-                return NotFound();
-            }
+        //     Customer customer = _context.Customer.Single(m => m.CustomerId == id);
+        //     if (customer == null)
+        //     {
+        //         return NotFound();
+        //     }
 
-            _context.Customer.Remove(customer);
-            _context.SaveChanges();
+        //     _context.Customer.Remove(customer);
+        //     _context.SaveChanges();
 
-            return Ok(customer);
-        }
+        //     return Ok(customer);
+        // }
     }
 }
