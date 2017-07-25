@@ -6,6 +6,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BangazonAPI.Models
 {
+  //Purpose: Contain customer info, including potential products to sell and customer's orders
+  //Auther: Team code
+  //Methods: Customer constructor method to set default values (1 is true and 0 is false) and date account is created
   public class Customer
   {
     [Key]
