@@ -11,7 +11,6 @@ namespace BangazonAPI.Models
     public int ProductTypeId { get; set; }
     [Required]
     public string Type { get; set; }
-
     public ICollection<Product> Products;
   
   }  

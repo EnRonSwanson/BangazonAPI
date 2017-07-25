@@ -10,8 +10,8 @@ namespace BangazonAPI.Models
     [Key]
     public int ProductId { get; set; }
     [Required]
-
-    public ProductType ProductType { get; set; } // need constructor
+    public int ProductTypeId { get; set; }
+    public ProductType ProductType { get; set; }
     [Required]
     public string Name { get; set; }
     [Required]
@@ -21,8 +21,7 @@ namespace BangazonAPI.Models
     [Required]
     public int SellerId { get; set; } // this is the same as CustomerId
     [Required]
-    public Customer Customer { get; set; } // need both to set up FK relationship
-
+    public Customer Customer { get; set; }
     public ICollection<OrderProduct> OrderProducts;
 
   }

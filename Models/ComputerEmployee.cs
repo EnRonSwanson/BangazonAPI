@@ -11,11 +11,9 @@ namespace BangazonAPI.Models
     public int ComputerEmployeeId { get; set; }
 
     [DataType(DataType.Date)]
-    [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
     public DateTime? OutDate { get; set; }
 
     [DataType(DataType.Date)]
-    [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
     public DateTime? InDate { get; set; }
 
     [Required]
