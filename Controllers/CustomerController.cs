@@ -96,14 +96,59 @@ namespace BangazonAPI.Controllers
 
     // PUT api/values/5
     [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+         public IActionResult Put(int id, [FromBody] Customer customer)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != customer.CustomerId)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(customer).State = EntityState.Modified;
+
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!CustomerExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return new StatusCodeResult(StatusCodes.Status204NoContent);
         }
+
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            Customer customer = _context.Customer.Single(m => m.CustomerId == id);
+            if (customer == null)
+            {
+                return NotFound();
+            }
+
+            _context.Customer.Remove(customer);
+            _context.SaveChanges();
+
+            return Ok(customer);
         }
     }
 }
