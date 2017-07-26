@@ -20,6 +20,7 @@ namespace BangazonAPI.Data
         public DbSet<Customer> Customer { get; set; }
         public DbSet<ComputerEmployee> ComputerEmployee { get; set; }
         public DbSet<Computer> Computer { get; set; }
+        public DbSet<PaymentType> PaymentType { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
