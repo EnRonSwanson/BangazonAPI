@@ -19,8 +19,9 @@ namespace BangazonAPI.Models
     [Required]
     public float Price { get; set; }
     [Required]
+
+    [ForeignKey("Customer")] 
     public int SellerId { get; set; } // this is the same as CustomerId
-    [Required]
     public Customer Customer { get; set; }
     public ICollection<OrderProduct> OrderProducts;
   }
