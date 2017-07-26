@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 
-// mitchell wrote and commented this file
+// mitchell wrote and commented training program controller
 // team also tested before merging
 
 namespace BangazonAPI.Controllers
