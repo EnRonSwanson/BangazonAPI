@@ -138,5 +138,29 @@ namespace BangazonAPI.Controllers
         //END SETUP FOR PUT
 
 
+        // DELETE api/values/5
+        //BEGIN SETUP FOR DELETE 
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            Order order = _context.Order.Single(m => m.OrderId == id);
+            if (order == null)
+            {
+                return NotFound();
+            }
+
+            _context.Order.Remove(order);
+            _context.SaveChanges();
+
+            return Ok(order);
+        }
+        //END SETUP FOR DELETE
+
+
     }
 }
