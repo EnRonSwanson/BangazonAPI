@@ -90,13 +90,13 @@ namespace BangazonAPI.Migrations
                     b.Property<int>("EmployeeId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("DepartmentId");
+                    b.Property<int?>("DepartmentId");
 
                     b.Property<string>("Name");
 
                     b.Property<DateTime>("StartDate");
 
-                    b.Property<int>("Supervisor");
+                    b.Property<int?>("Supervisor");
 
                     b.HasKey("EmployeeId");
 
@@ -261,8 +261,7 @@ namespace BangazonAPI.Migrations
                 {
                     b.HasOne("BangazonAPI.Models.Department", "Department")
                         .WithMany()
-                        .HasForeignKey("DepartmentId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("DepartmentId");
                 });
 
             modelBuilder.Entity("BangazonAPI.Models.Order", b =>
