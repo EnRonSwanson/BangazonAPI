@@ -20,7 +20,7 @@ namespace BangazonAPI.Controllers
             _context = ctx;
         }
 
-        // GET all Customers from customer table
+        // GET all Deparments from department table
         [HttpGet]
         public IActionResult Get()
         {
@@ -34,7 +34,7 @@ namespace BangazonAPI.Controllers
             return Ok(departments);
         }
 
-        //GET one customer from customer table
+        //GET one department from department table
         [HttpGet("{id}", Name = "GetDepartment")]
         public IActionResult Get([FromRoute] int id)
         {
@@ -95,7 +95,7 @@ namespace BangazonAPI.Controllers
       throw new NotImplementedException();
     }
 
-    // PUT edited values on existing customer
+    // PUT edited values on existing department
     [HttpPut("{id}")]
          public IActionResult Put(int id, [FromBody] Department department)
         {
