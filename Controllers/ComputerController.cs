@@ -8,38 +8,37 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 
-// team wrote this first controller together
-// mitchell and ryan typed the classes and methods
-// adam and madeline tested and commented
+// mitchell wrote and commented this file
+// team also tested before merging
 
 namespace BangazonAPI.Controllers
 {
     [Route("api/[controller]")]
-    public class CustomerController : Controller
+    public class ComputerController : Controller
     {
 
         private BangazonContext _context;
-        public CustomerController(BangazonContext ctx)
+        public ComputerController(BangazonContext ctx)
         {
             _context = ctx;
         }
 
-        // GET all Customers from customer table
+        // GET all computers from the computer table
         [HttpGet]
         public IActionResult Get()
         {
-            IQueryable<object> customers = from customer in _context.Customer select customer;
+            IQueryable<object> computers = from computer in _context.Computer select computer;
 
-            if (customers == null)
+            if (computers == null)
             {
                 return NotFound();
             }
 
-            return Ok(customers);
+            return Ok(computers);
         }
 
-        //GET one customer from customer table
-        [HttpGet("{id}", Name = "GetCustomer")]
+        // GET one computer from the computer table by its id
+        [HttpGet("{id}", Name = "GetComputer")]
         public IActionResult Get([FromRoute] int id)
         {
             if (!ModelState.IsValid)
@@ -49,14 +48,14 @@ namespace BangazonAPI.Controllers
 
             try
             {
-                Customer customer = _context.Customer.Single(m => m.CustomerId == id);
+                Computer computer = _context.Computer.Single(m => m.ComputerId == id);
 
-                if (customer == null)
+                if (computer == null)
                 {
                     return NotFound();
                 }
                 
-                return Ok(customer);
+                return Ok(computer);
             }
             catch (System.InvalidOperationException ex)
             {
@@ -64,16 +63,16 @@ namespace BangazonAPI.Controllers
             }
         }
 
-        // POST customer values to the customer table
+        // POST
         [HttpPost]
-        public IActionResult Post([FromBody] Customer customer)
+        public IActionResult Post([FromBody] Computer computer)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Customer.Add(customer);
+            _context.Computer.Add(computer);
             
             try
             {
@@ -81,7 +80,7 @@ namespace BangazonAPI.Controllers
             }
             catch (DbUpdateException)
             {
-                if (CustomerExists(customer.CustomerId))
+                if (ComputerExists(computer.ComputerId))
                 {
                     return new StatusCodeResult(StatusCodes.Status409Conflict);
                 }
@@ -91,29 +90,29 @@ namespace BangazonAPI.Controllers
                 }
             }
 
-            return CreatedAtRoute("GetCustomer", new { id = customer.CustomerId }, customer);
+            return CreatedAtRoute("GetComputer", new { id = computer.ComputerId }, computer);
         }
 
-    private bool CustomerExists(int customerId)
+    private bool ComputerExists(int computerId)
     {
       throw new NotImplementedException();
     }
 
-    // PUT edited values on existing customer
+    // PUT
     [HttpPut("{id}")]
-         public IActionResult Put(int id, [FromBody] Customer customer)
+         public IActionResult Put(int id, [FromBody] Computer computer)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != customer.CustomerId)
+            if (id != computer.ComputerId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(customer).State = EntityState.Modified;
+            _context.Entry(computer).State = EntityState.Modified;
 
             try
             {
@@ -121,7 +120,7 @@ namespace BangazonAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CustomerExists(id))
+                if (!ComputerExists(id))
                 {
                     return NotFound();
                 }
@@ -132,6 +131,27 @@ namespace BangazonAPI.Controllers
             }
 
             return new StatusCodeResult(StatusCodes.Status204NoContent);
+        }
+
+        // DELETE
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            Computer computer = _context.Computer.Single(m => m.ComputerId == id);
+            if (computer == null)
+            {
+                return NotFound();
+            }
+
+            _context.Computer.Remove(computer);
+            _context.SaveChanges();
+
+            return Ok(computer);
         }
     }
 }
