@@ -13,7 +13,7 @@ namespace BangazonAPI.Models
     public int CustomerId { get; set; }
     public Customer Customer { get; set; }
     [Required]
-    public int AccountNumber { get; set; }
+    public string AccountNumber { get; set; }
     [Required]
     public string Type { get; set; }
     public ICollection<Order> Orders;
