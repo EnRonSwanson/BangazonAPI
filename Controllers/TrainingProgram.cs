@@ -14,31 +14,31 @@ using Microsoft.AspNetCore.Http;
 namespace BangazonAPI.Controllers
 {
     [Route("api/[controller]")]
-    public class ComputerController : Controller
+    public class TrainingProgramController : Controller
     {
 
         private BangazonContext _context;
-        public ComputerController(BangazonContext ctx)
+        public TrainingProgramController(BangazonContext ctx)
         {
             _context = ctx;
         }
 
-        // GET all computers from the computer table
+        // GET all training programs from the training program table
         [HttpGet]
         public IActionResult Get()
         {
-            IQueryable<object> computers = from computer in _context.Computer select computer;
+            IQueryable<object> trainingPrograms = from trainingProgram in _context.TrainingProgram select trainingProgram;
 
-            if (computers == null)
+            if (trainingPrograms == null)
             {
                 return NotFound();
             }
 
-            return Ok(computers);
+            return Ok(trainingPrograms);
         }
 
-        // GET one computer from the computer table by its id
-        [HttpGet("{id}", Name = "GetComputer")]
+        // GET one training program from the training program table by its id
+        [HttpGet("{id}", Name = "GetTrainingProgram")]
         public IActionResult Get([FromRoute] int id)
         {
             if (!ModelState.IsValid)
@@ -48,14 +48,14 @@ namespace BangazonAPI.Controllers
 
             try
             {
-                Computer computer = _context.Computer.Single(m => m.ComputerId == id);
+                TrainingProgram trainingProgram = _context.TrainingProgram.Single(m => m.TrainingProgramId == id);
 
-                if (computer == null)
+                if (trainingProgram == null)
                 {
                     return NotFound();
                 }
                 
-                return Ok(computer);
+                return Ok(trainingProgram);
             }
             catch (System.InvalidOperationException ex)
             {
@@ -63,16 +63,16 @@ namespace BangazonAPI.Controllers
             }
         }
 
-        // POST new computer to the db, and it's id is auto generated
+        // POST a new training program to the db. Id is auto generated.
         [HttpPost]
-        public IActionResult Post([FromBody] Computer computer)
+        public IActionResult Post([FromBody] TrainingProgram trainingProgram)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Computer.Add(computer);
+            _context.TrainingProgram.Add(trainingProgram);
             
             try
             {
@@ -80,7 +80,7 @@ namespace BangazonAPI.Controllers
             }
             catch (DbUpdateException)
             {
-                if (ComputerExists(computer.ComputerId))
+                if (TrainingProgramExists(trainingProgram.TrainingProgramId))
                 {
                     return new StatusCodeResult(StatusCodes.Status409Conflict);
                 }
@@ -90,29 +90,29 @@ namespace BangazonAPI.Controllers
                 }
             }
 
-            return CreatedAtRoute("GetComputer", new { id = computer.ComputerId }, computer);
+            return CreatedAtRoute("GetTrainingProgram", new { id = trainingProgram.TrainingProgramId }, trainingProgram);
         }
 
-    private bool ComputerExists(int computerId)
+    private bool TrainingProgramExists(int trainingProgramId)
     {
       throw new NotImplementedException();
     }
 
-    // PUT edits on a computer by its id
+    // PUT any edits to the training program by id
     [HttpPut("{id}")]
-         public IActionResult Put(int id, [FromBody] Computer computer)
+         public IActionResult Put(int id, [FromBody] TrainingProgram trainingProgram)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != computer.ComputerId)
+            if (id != trainingProgram.TrainingProgramId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(computer).State = EntityState.Modified;
+            _context.Entry(trainingProgram).State = EntityState.Modified;
 
             try
             {
@@ -120,7 +120,7 @@ namespace BangazonAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ComputerExists(id))
+                if (!TrainingProgramExists(id))
                 {
                     return NotFound();
                 }
@@ -133,7 +133,7 @@ namespace BangazonAPI.Controllers
             return new StatusCodeResult(StatusCodes.Status204NoContent);
         }
 
-        // DELETE a computer from the db by its id
+        // DELETE a training program at that id from the db
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
@@ -142,16 +142,16 @@ namespace BangazonAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            Computer computer = _context.Computer.Single(m => m.ComputerId == id);
-            if (computer == null)
+            TrainingProgram trainingProgram = _context.TrainingProgram.Single(m => m.TrainingProgramId == id);
+            if (trainingProgram == null)
             {
                 return NotFound();
             }
 
-            _context.Computer.Remove(computer);
+            _context.TrainingProgram.Remove(trainingProgram);
             _context.SaveChanges();
 
-            return Ok(computer);
+            return Ok(trainingProgram);
         }
     }
 }

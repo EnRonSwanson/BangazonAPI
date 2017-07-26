@@ -9,6 +9,7 @@ namespace BangazonAPI.Models
   {
     [Key]
     public int TrainingProgramId { get; set; }
+    public string Name { get; set; }
     [DataType(DataType.Date)]
     public DateTime StartDate { get; set; }
     [DataType(DataType.Date)]

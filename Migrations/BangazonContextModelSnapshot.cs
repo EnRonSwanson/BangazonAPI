@@ -235,6 +235,8 @@ namespace BangazonAPI.Migrations
 
                     b.Property<int>("MaxAttendees");
 
+                    b.Property<string>("Name");
+
                     b.Property<DateTime>("StartDate");
 
                     b.HasKey("TrainingProgramId");
