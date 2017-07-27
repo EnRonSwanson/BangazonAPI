@@ -13,9 +13,7 @@ namespace BangazonAPI.Data
 {
     public static class DbInitializer
     {
-    private static IEnumerable<Department> departments;
-
-    public static void Initialize(IServiceProvider serviceProvider)
+        public static void Initialize(IServiceProvider serviceProvider)
         {
             using (var context = new BangazonContext(serviceProvider.GetRequiredService<DbContextOptions<BangazonContext>>()))
             {
@@ -61,6 +59,7 @@ namespace BangazonAPI.Data
                 }
                 context.SaveChanges();
 
+                //seeding DEPARTMENTS
                 var departments = new Department[]
                 {
                     new Department { 
