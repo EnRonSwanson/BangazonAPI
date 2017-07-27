@@ -66,15 +66,15 @@ namespace BangazonAPI.Controllers
         // POST api/values
         //BEGIN SETUP FOR POST
         [HttpPost]
-        public IActionResult Post([FromBody] Product product)
+        public IActionResult Post([FromBody] BuyerProduct buyerProduct)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            Order order = new Order(){CustomerId=product.SellerId};
+            Order order = new Order(){CustomerId=buyerProduct.BuyerId};
             _context.Order.Add(order);
-            OrderProduct orderProduct = new OrderProduct(){OrderId=order.OrderId, ProductId = product.ProductId};
+            OrderProduct orderProduct = new OrderProduct(){OrderId=order.OrderId, ProductId = buyerProduct.ProductId};
             _context.OrderProduct.Add(orderProduct);
             try
             {
