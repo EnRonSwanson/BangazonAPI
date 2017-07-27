@@ -23,6 +23,6 @@ namespace BangazonAPI.Models
     [ForeignKey("Customer")] 
     public int SellerId { get; set; } // this is the same as CustomerId
     public Customer Customer { get; set; }
-    public ICollection<OrderProduct> OrderProducts;
+    public virtual ICollection<OrderProduct> OrderProducts {get; set;}
   }
 }
