@@ -29,5 +29,9 @@ namespace BangazonAPI.Models
       AccountCreationDate = DateTime.Now;
     }
 
+    internal static object Single(Func<object, bool> p)
+    {
+      throw new NotImplementedException();
+    }
   }
 }

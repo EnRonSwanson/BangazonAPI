@@ -90,14 +90,14 @@ namespace BangazonAPI.Controllers
             return CreatedAtRoute("PostDepartment", new { id = department.DepartmentId }, department);
         }
 
-    private bool DepartmentExists(int departmentId)
-    {
-      throw new NotImplementedException();
-    }
+        private bool DepartmentExists(int departmentId)
+        {
+        throw new NotImplementedException();
+        }
 
-    // PUT edited values on existing department
-    [HttpPut("{id}")]
-         public IActionResult Put(int id, [FromBody] Department department)
+        // PUT edited values on existing department
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, [FromBody] Department department)
         {
             if (!ModelState.IsValid)
             {
