@@ -48,7 +48,7 @@ namespace BangazonAPI.Controllers
             try
             {
                 Order order = _context.Order.Include("OrderProducts.Product").Single(m => m.OrderId == id);
-                
+                                
                 if (order == null)
                 {
                     return NotFound();
