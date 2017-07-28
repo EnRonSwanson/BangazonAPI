@@ -124,29 +124,6 @@ namespace BangazonAPI.Data
                 }
                 context.SaveChanges();
 
-                //seeding ORDERS
-                var orders = new Order[]
-                {
-                    new Order { 
-                        CustomerId = customers.Single(f => f.FirstName == "Jelly").CustomerId,
-                        PaymentTypeId = paymentTypes.Single(t => t.Type == "Visa").PaymentTypeId
-                    },
-                    new Order { 
-                        CustomerId = customers.Single(f => f.FirstName == "Nigel").CustomerId,
-                        PaymentTypeId = paymentTypes.Single(t => t.Type == "MasterCard").PaymentTypeId
-                    },
-                    new Order { 
-                        CustomerId = customers.Single(f => f.FirstName == "Frank").CustomerId,
-                        PaymentTypeId = paymentTypes.Single(t => t.Type == "AmericanExpress").PaymentTypeId
-                    }
-                };
-
-                foreach (Order i in orders)
-                {
-                    context.Order.Add(i);
-                }
-                context.SaveChanges();
-
                 //seeding PRODUCT TYPES
                 var productTypes = new ProductType[]
                 {
@@ -208,7 +185,7 @@ namespace BangazonAPI.Data
                     },
                     new TrainingProgram { 
                         Name = "Excelling at Excel",
-                        MaxAttendees = 12
+                        MaxAttendees = 21
                     },
                     new TrainingProgram { 
                         Name = "Bring Your Things",
@@ -219,6 +196,78 @@ namespace BangazonAPI.Data
                 foreach (TrainingProgram i in trainingPrograms)
                 {
                     context.TrainingProgram.Add(i);
+                }
+                context.SaveChanges();
+
+                //seeding ORDERS, scrambling order of customers so no initial sellerId will equal a buyerId
+                var orders = new Order[]
+                {
+                    new Order { 
+                        CustomerId = customers.Single(f => f.FirstName == "Nigel").CustomerId,
+                        PaymentTypeId = paymentTypes.Single(t => t.Type == "Visa").PaymentTypeId
+                    },
+                    new Order {
+                        CustomerId = customers.Single(f => f.FirstName == "Frank").CustomerId,
+                        PaymentTypeId = paymentTypes.Single(t => t.Type == "MasterCard").PaymentTypeId
+                    },
+                    new Order { 
+                        CustomerId = customers.Single(f => f.FirstName == "Jelly").CustomerId,
+                        PaymentTypeId = paymentTypes.Single(t => t.Type == "AmericanExpress").PaymentTypeId
+                    }
+                };
+
+                foreach (Order i in orders)
+                {
+                    context.Order.Add(i);
+                }
+                context.SaveChanges();
+
+                //seeding ORDER-PRODUCTS, matching up with the initialized orders and products by id
+                var orderProducts = new OrderProduct[]
+                {
+                    new OrderProduct {
+                        OrderId = orders.Single(o => o.OrderId == 1).OrderId,
+                        ProductId = products.Single(o => o.ProductId == 1).ProductId
+                    },
+                    new OrderProduct {
+                        OrderId = orders.Single(o => o.OrderId == 2).OrderId,
+                        ProductId = products.Single(o => o.ProductId == 2).ProductId
+                    },
+                    new OrderProduct {
+                        OrderId = orders.Single(o => o.OrderId == 3).OrderId,
+                        ProductId = products.Single(o => o.ProductId == 3).ProductId
+                    }
+                };
+                   
+                foreach (OrderProduct i in orderProducts)
+                {
+                    context.OrderProduct.Add(i);
+                }
+                context.SaveChanges();
+
+                //seeding COMPUTER-EMPLOYEES
+                var computerEmployees = new ComputerEmployee[]
+                {
+                    new ComputerEmployee {
+                        EmployeeId = employees.Single(e => e.Name == "Jon Snow").EmployeeId,
+                        ComputerId = computers.Single(c => c.ComputerId == 1).ComputerId,
+                        InDate = DateTime.Now
+                    },
+                    new ComputerEmployee {
+                        EmployeeId = employees.Single(e => e.Name == "Stephen Spielburg").EmployeeId,
+                        ComputerId = computers.Single(c => c.ComputerId == 2).ComputerId,
+                        InDate = DateTime.Now
+                    },
+                    new ComputerEmployee {
+                        EmployeeId = employees.Single(e => e.Name == "Megan Berry").EmployeeId,
+                        ComputerId = computers.Single(c => c.ComputerId == 3).ComputerId,
+                        InDate = DateTime.Now
+                    }
+                };
+                   
+                foreach (ComputerEmployee i in computerEmployees)
+                {
+                    context.ComputerEmployee.Add(i);
                 }
                 context.SaveChanges();
 
