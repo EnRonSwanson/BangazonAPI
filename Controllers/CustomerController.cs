@@ -26,16 +26,22 @@ namespace BangazonAPI.Controllers
 
         // GET all Customers from customer table
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get(string active)
         {
-            IQueryable<object> customers = from customer in _context.Customer select customer;
+            IQueryable<object> customers = from customerX in _context.Customer select customerX;
 
             if (customers == null)
             {
                 return NotFound();
-            }
-
-            return Ok(customers);
+            } 
+            else if(active == "0")
+            {
+                IQueryable<object> customerY = from customerx in _context.Customer where customerx.Active==0 select customerx;
+                return Ok(customerY);
+            } 
+          
+                return Ok(customers);
+            
         }
 
         //GET one customer from customer table
@@ -63,6 +69,19 @@ namespace BangazonAPI.Controllers
                 return NotFound();
             }
         }
+
+        //Get customers that are inactive
+        // [HttpGet("api/customer/")]
+        // public IActionResult Get(int active, [FromBody] Customer customer)
+        // {
+        //    IQueryable<object> customers = from customerx in _context.Customer where customerx.Active==0 select customerx;
+        //     if(active == 0)
+        //     {
+        //         return Ok(customers);
+        //     }
+        //         return NotFound();
+
+        // }
 
         // POST customer values to the customer table
         [HttpPost]
