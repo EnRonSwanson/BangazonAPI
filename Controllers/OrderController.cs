@@ -26,7 +26,8 @@ namespace BangazonAPI.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            IQueryable<object> order = from Order in _context.Order select Order;
+            // IQueryable<object> order = from Order in _context.Order select Order;
+            IQueryable<object> order = _context.Order.Include("OrderProducts.Product");
 
             if (order == null)
             {
@@ -46,8 +47,8 @@ namespace BangazonAPI.Controllers
 
             try
             {
-                Order order = _context.Order.Single(m => m.OrderId == id);
-
+                Order order = _context.Order.Include("OrderProducts.Product").Single(m => m.OrderId == id);
+                                
                 if (order == null)
                 {
                     return NotFound();
@@ -65,15 +66,16 @@ namespace BangazonAPI.Controllers
         // POST api/values
         //BEGIN SETUP FOR POST
         [HttpPost]
-        public IActionResult Post([FromBody] Order order)
+        public IActionResult Post([FromBody] BuyerProduct buyerProduct)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
+            Order order = new Order(){CustomerId=buyerProduct.BuyerId};
             _context.Order.Add(order);
-            
+            OrderProduct orderProduct = new OrderProduct(){OrderId=order.OrderId, ProductId = buyerProduct.ProductId};
+            _context.OrderProduct.Add(orderProduct);
             try
             {
                 _context.SaveChanges();

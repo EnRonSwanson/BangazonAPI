@@ -17,7 +17,7 @@ namespace BangazonAPI.Models
     public Customer Customer { get; set; } //This is a link to Customer in order to get the nessecary data from customer
     public int? PaymentTypeId { get; set;} //An order will also need but not require a PaymentTypeId to complete its order
     public PaymentType PaymentType { get; set; } //This is a link to PaymentType in order to get the nessecary data from PaymentType
-    public ICollection<OrderProduct> OrderProducts; // the many side to a 1 to many relationship
+    public virtual ICollection<OrderProduct> OrderProducts {get; set;} // the many side to a 1 to many relationship
 
     public Order() {
       DateCreated = DateTime.Now; //In order to actually get the current timestamp (and have it work correctly) this is required

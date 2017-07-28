@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BangazonAPI.Models
 {
-  public class Product
+  public class BuyerProduct
   {
     [Key]
     public int ProductId { get; set; }
@@ -21,8 +21,7 @@ namespace BangazonAPI.Models
     [Required]
 
     [ForeignKey("Customer")] 
-    public int SellerId { get; set; } // this is the same as CustomerId
+    public int BuyerId { get; set; } // this is the same as CustomerId
     public Customer Customer { get; set; }
-    public virtual ICollection<OrderProduct> OrderProducts {get; set;}
   }
 }
