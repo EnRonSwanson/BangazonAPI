@@ -181,15 +181,23 @@ namespace BangazonAPI.Data
                 {
                     new TrainingProgram { 
                         Name = "Doing Your Best",
-                        MaxAttendees = 12
+                        MaxAttendees = 12,
+                        StartDate = new DateTime(2018, 8, 28, 2,3,0)
                     },
                     new TrainingProgram { 
                         Name = "Excelling at Excel",
-                        MaxAttendees = 21
+                        MaxAttendees = 21,
+                        StartDate = new DateTime(2017, 8, 28, 2,3,0)
                     },
                     new TrainingProgram { 
                         Name = "Bring Your Things",
-                        MaxAttendees = 3
+                        MaxAttendees = 3,
+                        StartDate = new DateTime(2016, 7, 28, 2,3,0)
+                    },
+                    new TrainingProgram { 
+                        Name = "Do Life Better",
+                        MaxAttendees = 45,
+                        StartDate = new DateTime(2015, 7, 28, 2,3,0)
                     }
                 };
                 
