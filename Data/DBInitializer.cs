@@ -245,6 +245,32 @@ namespace BangazonAPI.Data
                 }
                 context.SaveChanges();
 
+                //seeding COMPUTER-EMPLOYEES
+                var computerEmployees = new ComputerEmployee[]
+                {
+                    new ComputerEmployee {
+                        EmployeeId = employees.Single(e => e.Name == "Jon Snow").EmployeeId,
+                        ComputerId = computers.Single(c => c.ComputerId == 1).ComputerId,
+                        InDate = DateTime.Now
+                    },
+                    new ComputerEmployee {
+                        EmployeeId = employees.Single(e => e.Name == "Stephen Spielburg").EmployeeId,
+                        ComputerId = computers.Single(c => c.ComputerId == 2).ComputerId,
+                        InDate = DateTime.Now
+                    },
+                    new ComputerEmployee {
+                        EmployeeId = employees.Single(e => e.Name == "Megan Berry").EmployeeId,
+                        ComputerId = computers.Single(c => c.ComputerId == 3).ComputerId,
+                        InDate = DateTime.Now
+                    }
+                };
+                   
+                foreach (ComputerEmployee i in computerEmployees)
+                {
+                    context.ComputerEmployee.Add(i);
+                }
+                context.SaveChanges();
+
             }
        }
     }
