@@ -23,6 +23,7 @@ namespace BangazonAPI.Controllers
 
         // GET api/values
         // BEGIN THE SETUP FOR GET
+        //Get all products
         [HttpGet]
         public IActionResult Get()
         {
@@ -37,6 +38,7 @@ namespace BangazonAPI.Controllers
             return Ok(order);
         }
 
+        //Get individual order, given order id
         [HttpGet("{id}", Name = "GetOrder")]
         public IActionResult Get([FromRoute] int id)
         {
@@ -94,6 +96,35 @@ namespace BangazonAPI.Controllers
 
             return CreatedAtRoute("GetOrder", new { id = order.OrderId }, order);
         }
+
+        //Post a product to an existing order
+        [HttpPost("/api/order/{id}/AddNewProduct")]
+         public IActionResult Post([FromRoute]int id, [FromBody] BuyerProduct buyerProduct)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            OrderProduct orderProduct = new OrderProduct(){OrderId=id, ProductId = buyerProduct.ProductId};
+            _context.OrderProduct.Add(orderProduct);
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbUpdateException)
+            {
+                if (OrderExists(id))
+                {
+                    return new StatusCodeResult(StatusCodes.Status409Conflict);
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return new StatusCodeResult(StatusCodes.Status204NoContent);
+        }
         //END SETUP FOR POST
 
     private bool OrderExists(int orderId)
@@ -104,6 +135,8 @@ namespace BangazonAPI.Controllers
 
     // PUT api/values/5
     //BEGIN SETUP FOR PUT
+
+    //Add a payment type to an order (add in the payment type Id)
     [HttpPut("{id}")]
          public IActionResult Put(int id, [FromBody] Order order)
         {
@@ -137,6 +170,7 @@ namespace BangazonAPI.Controllers
 
             return new StatusCodeResult(StatusCodes.Status204NoContent);
         }
+
         //END SETUP FOR PUT
 
 
