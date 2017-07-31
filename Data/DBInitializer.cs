@@ -27,15 +27,18 @@ namespace BangazonAPI.Data
                 {
                     new Customer { 
                         FirstName = "Jelly",
-                        LastName = "Otter"
+                        LastName = "Otter",
+                        Active = 0
                     },
                     new Customer { 
                         FirstName = "Nigel",
-                        LastName = "Thornberry"
+                        LastName = "Thornberry",
+                        Active = 1
                     },
                     new Customer { 
                         FirstName = "Frank",
-                        LastName = "Underwood"
+                        LastName = "Underwood",
+                        Active = 1
                     },
                 };
 
