@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Cors;
 
 // team wrote this first controller together
 // mitchell and ryan typed the classes and methods
@@ -15,6 +16,7 @@ using Microsoft.AspNetCore.Http;
 namespace BangazonAPI.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("AllowWhiteListOrigins")]
     public class CustomerController : Controller
     {
 

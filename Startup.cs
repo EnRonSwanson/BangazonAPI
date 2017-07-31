@@ -36,7 +36,7 @@ namespace BangazonAPI
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowWhiteListOrigins",
-                    builder => builder.WithOrigins("http://example.com"));
+                    builder => builder.WithOrigins("http://bangazon.com"));
             });
 
             // Add framework services.
