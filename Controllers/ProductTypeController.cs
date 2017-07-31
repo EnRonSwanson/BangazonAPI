@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 
+//ADAM WROTE THIS CONTROLLER
+//THE REST OF THE TEAM TESTED
+
 namespace BangazonAPI.Controllers
 {
     [Route("api/[controller]")]
@@ -34,7 +37,7 @@ namespace BangazonAPI.Controllers
             return Ok(productTypes);
         }
 
-        //GET one productType from productType table
+        //GET one productType from productType table by producttypeId
         [HttpGet("{id}", Name = "GetProductType")]
         public IActionResult Get([FromRoute] int id)
         {
@@ -90,6 +93,7 @@ namespace BangazonAPI.Controllers
             return CreatedAtRoute("PostProductType", new { id = productType.ProductTypeId }, productType);
         }
 
+    //CHECKS TO SEE IF A PRODUCT TYPE IS CREATED
     private bool ProductTypeExists(int productTypeId)
     {
       throw new NotImplementedException();
@@ -130,7 +134,7 @@ namespace BangazonAPI.Controllers
             return new StatusCodeResult(StatusCodes.Status204NoContent);
         }
 
-        // DELETE api/producttype/5
+        // DELETE PRODUCTTYPE BY ITS ID
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

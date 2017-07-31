@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 
+//RYAN WROTE THIS CONTROLLER
+//THE REST OF THE TEAM TESTED
+
 namespace BangazonAPI.Controllers
 {
     [Route("api/[controller]")]
@@ -23,7 +26,7 @@ namespace BangazonAPI.Controllers
         //END
 
         // GET api/values
-        // BEGIN THE SETUP FOR GET
+        // BEGIN THE SETUP FOR GET/GETS ALL EMPLOYEES
         [HttpGet]
         public IActionResult Get()
         {
@@ -36,7 +39,9 @@ namespace BangazonAPI.Controllers
 
             return Ok(employee);
         }
+        //END
 
+        //BEGIN GET FOR INDIVIDUAL EMPLOYEE
         [HttpGet("{id}", Name = "GetEmployee")]
         public IActionResult Get([FromRoute] int id)
         {
@@ -64,7 +69,7 @@ namespace BangazonAPI.Controllers
         //END SETUP FOR GET
 
         // POST api/values
-        //BEGIN SETUP FOR POST
+        //BEGIN SETUP FOR POST/INSERT INTO A NEW TABLE
         [HttpPost]
         public IActionResult Post([FromBody] Employee employee)
         {
@@ -95,6 +100,7 @@ namespace BangazonAPI.Controllers
         }
         //END SETUP FOR POST
 
+    //CHECKS TO SEE IF AN EMPLOYEE HAS BEEN CREATED OR NOT
     private bool OrderExists(int orderId)
     {
       throw new NotImplementedException();
@@ -102,7 +108,7 @@ namespace BangazonAPI.Controllers
 
 
     // PUT api/values/5
-    //BEGIN SETUP FOR PUT
+    //BEGIN SETUP FOR PUT/EDIT AN EMPLOYEE BY ITS ID
     [HttpPut("{id}")]
          public IActionResult Put(int id, [FromBody] Employee employee)
         {
@@ -139,5 +145,6 @@ namespace BangazonAPI.Controllers
         //END SETUP FOR PUT
 
 
+        //NO DELETE METHOD FOR EMPLOYEE
     }
 }

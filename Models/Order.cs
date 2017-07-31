@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+  //Purpose: Dispaly info for Order with a collection of OrderProducts
+  //Auther: Team code
+  //Methods: The order method auto generates a current timestamp when an order is created
+
+
 namespace BangazonAPI.Models
 {
   public class Order
@@ -16,7 +21,7 @@ namespace BangazonAPI.Models
     public int CustomerId { get; set; }  //An order will require the customer Id to be associated with it 
     public Customer Customer { get; set; } //This is a link to Customer in order to get the nessecary data from customer
     public int? PaymentTypeId { get; set;} //An order will also need but not require a PaymentTypeId to complete its order
-    public PaymentType PaymentType { get; set; } //This is a link to PaymentType in order to get the nessecary data from PaymentType
+    public PaymentType PaymentType { get; set; } //This is a link to PaymentType in order to get the necessary data from PaymentType
     public virtual ICollection<OrderProduct> OrderProducts {get; set;} // the many side to a 1 to many relationship
 
     public Order() {

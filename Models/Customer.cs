@@ -12,7 +12,7 @@ namespace BangazonAPI.Models
   public class Customer
   {
     [Key]
-    public int CustomerId { get; set; }
+    public int CustomerId { get; set; }//primary key
     public string FirstName { get; set; }
     public string LastName { get; set; }
     [Required]

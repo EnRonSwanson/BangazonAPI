@@ -43,7 +43,7 @@ namespace BangazonAPI
              services.AddMvc()
                 .AddJsonOptions(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
-
+            //ENVIRONMENT VARIABLE 
             string path = System.Environment.GetEnvironmentVariable("BANGAZON_DB");
             var connection = $"Filename={path}";
             Console.WriteLine($"connection = {connection}");

@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 
+//ADAM WROTE THIS CONTROLLER
+//THE REST OF THE TEAM TESTED IT
+
 namespace BangazonAPI.Controllers
 {
     [Route("api/[controller]")]
@@ -20,7 +23,7 @@ namespace BangazonAPI.Controllers
             _context = ctx;
         }
 
-        // GET all Deparments from department table
+        // GET all Departments from department table
         [HttpGet]
         public IActionResult Get()
         {
@@ -90,6 +93,7 @@ namespace BangazonAPI.Controllers
             return CreatedAtRoute("PostDepartment", new { id = department.DepartmentId }, department);
         }
 
+          //CHECKS TO SEE IF A DEPARTMENT HAS BEEN CREATED OR NOT
         private bool DepartmentExists(int departmentId)
         {
         throw new NotImplementedException();

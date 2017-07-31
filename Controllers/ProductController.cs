@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 
+//MADELINE WROTE THIS CONTROLLER
+//THE REST OF THE TEAM TESTED
+
 namespace BangazonAPI.Controllers
 {
     [Route("api/[controller]")]
@@ -20,7 +23,7 @@ namespace BangazonAPI.Controllers
             _context = ctx;
         }
 
-        // GET all products from product table
+        // GET all products from product table including ORDERS associated with that product
         [HttpGet]
         public IActionResult Get()
         {
@@ -34,7 +37,7 @@ namespace BangazonAPI.Controllers
             return Ok(products);
         }
 
-        //GET one product on product table
+        //GET one product on product table from its productID
         [HttpGet("{id}", Name = "GetProduct")]
         public IActionResult Get([FromRoute] int id)
         {
@@ -89,7 +92,8 @@ namespace BangazonAPI.Controllers
 
             return CreatedAtRoute("GetProduct", new { id = product.ProductId }, product);
         }
-
+    
+    //CHECKS TO SEE IF A PRODUCT HAS BEEN CREATED
     private bool ProductExists(int productId)
     {
       throw new NotImplementedException();

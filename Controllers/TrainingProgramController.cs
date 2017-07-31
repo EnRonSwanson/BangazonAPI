@@ -93,6 +93,7 @@ namespace BangazonAPI.Controllers
             return CreatedAtRoute("GetTrainingProgram", new { id = trainingProgram.TrainingProgramId }, trainingProgram);
         }
 
+    //CHECKS TO SEE IF A TRAINGING PROGRAM IS CREATED
     private bool TrainingProgramExists(int trainingProgramId)
     {
       throw new NotImplementedException();
