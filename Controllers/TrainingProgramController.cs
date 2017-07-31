@@ -133,7 +133,7 @@ namespace BangazonAPI.Controllers
             return new StatusCodeResult(StatusCodes.Status204NoContent);
         }
 
-        // DELETE a training program at that id from the db
+        // DELETE a training program at that id from the db ONLY if the program's date is in the future
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
@@ -148,7 +148,16 @@ namespace BangazonAPI.Controllers
                 return NotFound();
             }
 
-            _context.TrainingProgram.Remove(trainingProgram);
+            int dateDifference = DateTime.Compare(trainingProgram.StartDate, DateTime.Today);
+            if (dateDifference > 0)
+            {
+                _context.TrainingProgram.Remove(trainingProgram);
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
+
             _context.SaveChanges();
 
             return Ok(trainingProgram);
