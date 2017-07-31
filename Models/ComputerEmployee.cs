@@ -3,25 +3,26 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-  //Purpose: Join table for computer and employee
-  //Auther: Team code
-  //Methods: TO CREATE A CUSTOM CLASS TO FIND WHEN A COMPUTER IS ASSIGNED TO AN EMPLOYEE AND WHEN IT IS RETURNED
+//Purpose: Join table for computer and employee
+//Author: Team code
 
 namespace BangazonAPI.Models
 {
   public class ComputerEmployee
+  // This class indicates when a computer is checked into the system, assigned to an employee, returned, and decomissioned. 
+  //THE ? BY DateTime MEANS THAT THE VALUE CAN ALSO BE NULL
   {
     [Key]
-    public int ComputerEmployeeId { get; set; }//primary Key
+    public int ComputerEmployeeId { get; set; }
     [DataType(DataType.Date)]
-    public DateTime? OutDate { get; set; }//THE ? BY DateTime MEANS THAT THE VALUE CAN ALSO BE NULL
+    public DateTime? OutDate { get; set; } 
     [DataType(DataType.Date)]
-    public DateTime? InDate { get; set; }//THE ? BY DateTime MEANS THAT THE VALUE CAN ALSO BE NULL
+    public DateTime? InDate { get; set; }
     [Required]
-    public int EmployeeId { get; set; }//foreign key
-    public Employee Employee { get; set; }//reference to Employee to get EmployeeId
+    public int EmployeeId { get; set;  }
+    public Employee Employee { get; set; }
     [Required]
-    public int ComputerId { get; set; }//foreign key
-    public Computer Computer { get; set; }//reference to Computer to get ComputerId
+    public int ComputerId { get; set; }
+    public Computer Computer { get; set; }
   }
 }

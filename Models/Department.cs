@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-  //Purpose: Display info for departments which includes a collection of employees
-  //Auther: Team code
-  //Methods: 
+//Purpose: Display info for departments which includes a collection of employees
+//Author: Team code
 
 namespace BangazonAPI.Models
 {
