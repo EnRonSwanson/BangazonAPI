@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Cors;
 
 // team wrote this first controller together
 // mitchell and ryan typed the classes and methods
@@ -15,6 +16,7 @@ using Microsoft.AspNetCore.Http;
 namespace BangazonAPI.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("AllowWhiteListOrigins")]
     public class CustomerController : Controller
     {
 
@@ -25,6 +27,7 @@ namespace BangazonAPI.Controllers
         }
 
         // GET all Customers from customer table
+        // GET ALL USERS WITH THE ACTIVE OF "0"
         [HttpGet]
         public IActionResult Get(string active)
         {
@@ -70,18 +73,6 @@ namespace BangazonAPI.Controllers
             }
         }
 
-        //Get customers that are inactive
-        // [HttpGet("api/customer/")]
-        // public IActionResult Get(int active, [FromBody] Customer customer)
-        // {
-        //    IQueryable<object> customers = from customerx in _context.Customer where customerx.Active==0 select customerx;
-        //     if(active == 0)
-        //     {
-        //         return Ok(customers);
-        //     }
-        //         return NotFound();
-
-        // }
 
         // POST customer values to the customer table
         [HttpPost]
@@ -113,6 +104,7 @@ namespace BangazonAPI.Controllers
             return CreatedAtRoute("GetCustomer", new { id = customer.CustomerId }, customer);
         }
 
+    //CHECKS TO SEE IF A CUSTOMER HAS BEEN CREATED OR NOT
     private bool CustomerExists(int customerId)
     {
       throw new NotImplementedException();

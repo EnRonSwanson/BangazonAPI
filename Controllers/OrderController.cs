@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 
+//RYAN WROTE THIS CONTROLLER
+//THE REST OF THE TEAM TESTED
+
 namespace BangazonAPI.Controllers
 {
     [Route("api/[controller]")]
@@ -22,12 +25,10 @@ namespace BangazonAPI.Controllers
         //END
 
         // GET api/values
-        // BEGIN THE SETUP FOR GET
-        //Get all products
+        // BEGIN THE SETUP FOR GET/GETS ALL ORDERS
         [HttpGet]
         public IActionResult Get()
         {
-            // IQueryable<object> order = from Order in _context.Order select Order;
             IQueryable<object> order = _context.Order.Include("OrderProducts.Product");
 
             if (order == null)
@@ -66,7 +67,7 @@ namespace BangazonAPI.Controllers
         //END SETUP FOR GET
 
         // POST api/values
-        //BEGIN SETUP FOR POST
+        //BEGIN SETUP FOR POST/INSERT INTO A NEW TABLE
         [HttpPost]
         public IActionResult Post([FromBody] BuyerProduct buyerProduct)
         {
@@ -127,15 +128,15 @@ namespace BangazonAPI.Controllers
         }
         //END SETUP FOR POST
 
+    //CHECKS TO SEE IF AN EMPLOYEE HAS BEEN CREATED OR NOT
     private bool OrderExists(int orderId)
     {
       throw new NotImplementedException();
     }
 
 
-    // PUT api/values/5
-    //BEGIN SETUP FOR PUT
 
+    //BEGIN SETUP FOR PUT/EDIT THE ORDER BY ORDERID
     //Add a payment type to an order (add in the payment type Id)
     [HttpPut("{id}")]
          public IActionResult Put(int id, [FromBody] Order order)
@@ -174,8 +175,7 @@ namespace BangazonAPI.Controllers
         //END SETUP FOR PUT
 
 
-        // DELETE api/values/5
-        //BEGIN SETUP FOR DELETE 
+        //BEGIN SETUP FOR DELETE BY ORDERID
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

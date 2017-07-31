@@ -8,7 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 
-
+//MADELINE WROTE THIS CONTROLLER
+//THE REST OF THE TEAM TESTED
 
 namespace BangazonAPI.Controllers
 {
@@ -36,7 +37,7 @@ namespace BangazonAPI.Controllers
             return Ok(paymentTypes);
         }
 
-        // GET one training program from the training program table by its id
+        // GET one payment type from the payment type table by its id
         [HttpGet("{id}", Name = "GetPaymentType")]
         public IActionResult Get([FromRoute] int id)
         {
@@ -62,7 +63,7 @@ namespace BangazonAPI.Controllers
             }
         }
 
-        // POST a new training program to the db. Id is auto generated.
+        // POST a new payment type to the db. Id is auto generated.
         [HttpPost]
         public IActionResult Post([FromBody] PaymentType paymentType)
         {
@@ -97,7 +98,7 @@ namespace BangazonAPI.Controllers
       throw new NotImplementedException();
     }
 
-    // PUT any edits to the training program by id
+    // PUT any edits to the payment type by id
     [HttpPut("{id}")]
          public IActionResult Put(int id, [FromBody] PaymentType paymentType)
         {
@@ -132,7 +133,7 @@ namespace BangazonAPI.Controllers
             return new StatusCodeResult(StatusCodes.Status204NoContent);
         }
 
-        // DELETE a training program at that id from the db
+        // DELETE a payment type at that id from the db
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

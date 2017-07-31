@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+//Purpose: Display info for TrainingProgram
+//Author: Team code
+
 namespace BangazonAPI.Models
 {
   public class TrainingProgram

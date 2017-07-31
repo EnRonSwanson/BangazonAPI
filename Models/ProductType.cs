@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+//Purpose: Display the productType info with a collection of Products
+//Author: Team code
+
 namespace BangazonAPI.Models
 {
   public class ProductType

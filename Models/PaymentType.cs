@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+//Purpose: Display paymentType info for each customer, and a collection of Orders
+//Author: Team code
+//AccountNumber is the number for a customers paymentType, regardless of type
+//Types can be //visa, mastercard, americanExpress, and so on
+
+
 namespace BangazonAPI.Models
 {
   public class PaymentType

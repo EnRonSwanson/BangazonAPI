@@ -36,14 +36,14 @@ namespace BangazonAPI
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowWhiteListOrigins",
-                    builder => builder.WithOrigins("http://example.com"));
+                    builder => builder.WithOrigins("http://bangazon.com"));
             });
 
             // Add framework services.
              services.AddMvc()
                 .AddJsonOptions(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
-
+            //ENVIRONMENT VARIABLE 
             string path = System.Environment.GetEnvironmentVariable("BANGAZON_DB");
             var connection = $"Filename={path}";
             Console.WriteLine($"connection = {connection}");

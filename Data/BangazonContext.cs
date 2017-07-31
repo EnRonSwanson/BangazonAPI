@@ -8,7 +8,7 @@ namespace BangazonAPI.Data
         public BangazonContext(DbContextOptions<BangazonContext> options)
             : base(options)
         { }
-
+        //THESE ARE THE TABLES THAT ARE GOING IN THE DATABASE
         public DbSet<Order> Order { get; set; }
         public DbSet<OrderProduct> OrderProduct { get; set; }
         public DbSet<TrainingPgmEmp> TrainingPgmEmp { get; set; }

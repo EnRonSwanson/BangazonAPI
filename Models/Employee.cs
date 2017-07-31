@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+//Purpose: Display info for employee(s) 
+//Author: Team code
+//Methods: Employee constructor method to set default values to Supervisor (1 is true and 0 is false) and date account is created
+
 namespace BangazonAPI.Models
 {
   public class Employee
